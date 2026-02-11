@@ -3,7 +3,7 @@ Vue.component("header-component", {
      <div class="restaurant-header">
         <div class=" text-center position-relative">
             <a href="#" class="logo">
-                <img class="logo-img" src="/image/logo-header.webp"  alt="logo">
+                <img class="logo-img" src="image/logo-header.webp"  alt="logo">
             </a>
         </div>
     </div>
@@ -214,7 +214,7 @@ Vue.component("footer-component", {
   <div class="container-fluid py-4 text-center">
 
     <!-- Logo -->
-    <img src="/image/logo-footer.webp" alt="Logo" class="footer-logo img-fluid w-100">
+    <img src="image/logo-footer.webp" alt="Logo" class="footer-logo img-fluid w-100">
 
   </div>
 </footer>
@@ -229,19 +229,19 @@ var App = new Vue({
         id: 1,
         name: "دجاج مندي",
         price: 35.0,
-        image: "/image/chicken-mandie.webp",
+        image: "image/chicken-mandie.webp",
       },
-      { id: 2, name: "رز يمني", price: 25.0, image: "/image/riz-yemeni.webp" },
-      { id: 3, name: "كبسة لحم", price: 40.0, image: "/image/lamb-curry.webp" },
+      { id: 2, name: "رز يمني", price: 25.0, image: "image/riz-yemeni.webp" },
+      { id: 3, name: "كبسة لحم", price: 40.0, image: "image/lamb-curry.webp" },
     ],
     productAppetizers: [
-      { id: 1, name: "سلطة خضراء", price: 15.0, image: "/image/salad.webp" },
-      { id: 2, name: "حمص بالطحينة", price: 20.0, image: "/image/hummus.webp" },
+      { id: 1, name: "سلطة خضراء", price: 15.0, image: "image/salad.webp" },
+      { id: 2, name: "حمص بالطحينة", price: 20.0, image: "image/hummus.webp" },
       {
         id: 3,
         name: "متبل باذنجان",
         price: 18.0,
-        image: "/image/mutabal.webp",
+        image: "image/mutabal.webp",
       },
     ],
     productDrinks: [
@@ -249,19 +249,19 @@ var App = new Vue({
         id: 1,
         name: "عصير برتقال",
         price: 10.0,
-        image: "/image/orange-juice.webp",
+        image: "image/orange-juice.webp",
       },
       {
         id: 2,
         name: "عصير ليمون",
         price: 12.0,
-        image: "/image/lemon-juice.webp",
+        image: "image/lemon-juice.webp",
       },
       {
         id: 3,
         name: "عصير رمان",
         price: 15.0,
-        image: "/image/pomegranate-juice.webp",
+        image: "image/pomegranate-juice.webp",
       },
     ],
     selectedCategory: "main",
