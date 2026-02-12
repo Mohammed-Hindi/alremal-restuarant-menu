@@ -28,6 +28,7 @@ Vue.component("main-component", {
       return [];
     },
   },
+
   template: `
     <div>
       <!-- Navigation -->
@@ -112,18 +113,29 @@ Vue.component("cart-component", {
       this.$emit("reset-cart");
       this.showCart = false;
     },
+    increaseQuantity(item) {
+      if (!item.quantity) item.quantity = 1;
+      item.quantity++;
+    },
+
+    decreaseQuantity(item) {
+      if (!item.quantity) item.quantity = 1;
+      if (item.quantity > 1) {
+        item.quantity--;
+      }
+    },
     submitOrder() {
       const newOrder = {
         id: Date.now(),
-        customer: { ...this.localCustomer }, 
-        items: [...this.cart], 
+        customer: { ...this.localCustomer },
+        items: [...this.cart],
         total: this.cartTotal,
         date: new Date().toLocaleTimeString(),
         status: "pending",
       };
 
       let orders = JSON.parse(localStorage.getItem("orders") || "[]");
-      orders.push(newOrder); 
+      orders.push(newOrder);
       localStorage.setItem("orders", JSON.stringify(orders));
 
       this.resetForm();
@@ -155,7 +167,10 @@ Vue.component("cart-component", {
               </div>
               <div v-else>
                 <div v-for="item in cart" :key="item.product.id" class="d-flex justify-content-between align-items-center mb-2">
-                  <div>{{ item.product.name }} (x{{ item.quantity }})</div>
+                  <div>{{ item.product.name }} (x{{ item.quantity }})
+                  <button class="btn btn-sm btn-success" @click="increaseQuantity(item)">+</button>
+                 <button class="btn btn-sm btn-danger" @click="decreaseQuantity(item)">-</button>
+                  </div>
                   <div>{{ (item.product.price * item.quantity).toFixed(2) }} ₪</div>
                 </div>
 

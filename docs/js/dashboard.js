@@ -75,6 +75,7 @@ ${itemsList}
     deleteOrder(index) {
       this.$emit("delete-order", index);
     },
+   
   },
   template: `
         <div v-if="isAdmin" class="dashboard-orders container mt-4">
@@ -102,6 +103,7 @@ ${itemsList}
             <ul class="list-unstyled mb-0">
                 <li v-for="item in order.items" :key="item.product.id">
                 {{ item.product.name }} x{{ item.quantity }}
+                 
                 </li>
             </ul>
           </td>

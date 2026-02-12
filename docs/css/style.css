@@ -155,26 +155,34 @@ body {
   box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
 }
 
-.modal-content  {
+.modal-content{
   width: 100%;
   color: white;
   border-radius: 20px;
   border: none;
   box-shadow: var(--card-shadow);
 }
+
 .modal-body{
-  color: white;
+  color: var(--text-color);
+  border-radius: 20px;
+  padding: 5px;
 }
+
 .modal-dialog{
   width:90% !important ;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  color: var();
 }
 
 .modal-content .modal-header {
-  background: var(--secondary-color);
+  background: var(--secondary-color) !important;
   color: rgb(255, 255, 255);
   text-align: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   padding: 10px;
 }
 
