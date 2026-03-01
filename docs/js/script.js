@@ -134,11 +134,22 @@ Vue.component("cart-component", {
         status: "pending",
       };
 
-      let orders = JSON.parse(localStorage.getItem("orders") || "[]");
-      orders.push(newOrder);
-      localStorage.setItem("orders", JSON.stringify(orders));
-
-      this.resetForm();
+      fetch("save_order.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newOrder),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert("تم إرسال الطلب بنجاح");
+          this.resetForm();
+        })
+        .catch((err) => {
+          console.error("خطأ في إرسال الطلب", err);
+          alert("حدث خطأ أثناء إرسال الطلب");
+        });
     },
   },
   template: `

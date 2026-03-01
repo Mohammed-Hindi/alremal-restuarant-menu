@@ -137,25 +137,51 @@ var dashboard = new Vue({
   el: "#Dashboard",
   data: {
     isAdmin: localStorage.getItem("isAdmin") === "true",
-    orders: JSON.parse(localStorage.getItem("orders") || "[]"),
+    orders: [],
   },
+
+  mounted() {
+    this.fetchOrders();
+    setInterval(this.fetchOrders, 3000); // تحديث كل 3 ثواني
+  },
+
   methods: {
+    fetchOrders() {
+      fetch("get_orders.php")
+        .then(res => res.json())
+        .then(data => {
+          this.orders = data;
+        });
+    },
+
     handleLogin() {
       this.isAdmin = true;
       localStorage.setItem("isAdmin", "true");
     },
+
     logoutAdmin() {
       this.isAdmin = false;
       localStorage.removeItem("isAdmin");
     },
+
     updateOrderStatus(index, status) {
       this.orders[index].status = status;
-      localStorage.setItem("orders", JSON.stringify(this.orders));
+      this.saveAllOrders();
     },
 
     deleteOrder(index) {
       this.orders.splice(index, 1);
-      localStorage.setItem("orders", JSON.stringify(this.orders));
+      this.saveAllOrders();
+    },
+
+    saveAllOrders() {
+      fetch("save_all_orders.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.orders),
+      });
     },
   },
 });
